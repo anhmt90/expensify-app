@@ -14,7 +14,6 @@ import 'react-dates/lib/css/_datepicker.css'
 
 const store = configureStore();
 
-
 /**
  * Dummy data for debugging
  */

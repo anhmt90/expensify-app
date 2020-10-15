@@ -2,3 +2,6 @@
 *.log  
 node_modules/  
 *.bak  
+public/*.js  
+public/*.css  
+public/*.txt  

@@ -1,7 +1,13 @@
 const path = require('path')
+const MiniCssExtractPlugin  = require('mini-css-extract-plugin');
 
-module.exports = {
-    entry: './src/app.js',
+module.exports = (env) => {
+    console.log('env', env)
+    const isProduction = env === 'production';
+    const MiniCssExtract = new MiniCssExtractPlugin({filename: 'styles.css'});
+
+    return {
+        entry: './src/app.js',
     // entry: './src/playground/hoc.js',
     output: {
         path: path.join(__dirname, 'public'),                   // must be absolute path
@@ -17,14 +23,39 @@ module.exports = {
         }, {
             test: /\.s?css$/,           // ? helps support both scss and css
             // `use` allows to specify an array of loaders
-            use: [      
-                'style-loader',
-                'css-loader',
-                'sass-loader'
-            ] 
+            // use: [      
+            //     'style-loader',   //handle inline styles (which is not recommended)
+            //     'css-loader',
+            //     'sass-loader'
+            // ] 
+            use: [
+                MiniCssExtractPlugin.loader,
+                {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: true
+                    }
+                },
+                {
+                    loader: 'sass-loader',
+                    options: {
+                        sourceMap: true
+                    }
+                }
+            ]
         }]
     },
-    devtool: 'eval-cheap-module-source-map',
+    plugins: [
+        MiniCssExtract
+    ],
+    /**
+     * source-map takes more time to build and creates an external large file bundle.js.map, 
+     * but this file only gets loaded when we open React dev tool. So the regular users will get 
+     * just the bundle.js file, which is now way more lightweight
+     */
+    devtool: isProduction ? 
+        'source-map' : 
+        'inline-source-map',
     /* 
         devServer is also responsible for generating the bundle.js but not as a physical file 
         but serving that up directly from memory to keep the devServer snappy and fast.
@@ -34,4 +65,5 @@ module.exports = {
         contentBase: path.join(__dirname, 'public'),
         historyApiFallback: true //tell the dev-server to always serve up the index.html file for all unknown 404 -> client-side routing
     }
+    };
 };
