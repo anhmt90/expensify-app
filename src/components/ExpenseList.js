@@ -16,8 +16,6 @@ export const ExpenseList = (props) => (  // this named export is for testing pur
                 props.expenses.map((e) => (<ExpenseListItem key={e.id} {...e} />))
             )
         }
-        <h1>Expense List</h1>
-        {}
     </div>
 )
 
