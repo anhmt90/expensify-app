@@ -8,11 +8,12 @@
     "backup-scripts": {
       "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=@babel/env,@babel/react --watch",
       "start": "The start script is for heroku to start the express server",
-      "heroku-postbuild": "run scripts after the app was installed on Heroku"
+      "heroku-postbuild": "run scripts after the all dependencies (in package.json) were installed on Heroku",
+      "serve": "live-server public/"
     }
   },
   "scripts": {
-    "serve": "live-server public/",
+    
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
@@ -29,13 +30,9 @@
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^4.3.0",
-    "enzyme": "3.0.0",
     "enzyme-adapter-react-16": "1.0.0",
-    "enzyme-to-json": "^3.6.1",
     "express": "^4.17.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "jest": "^26.5.3",
-    "live-server": "^1.2.1",
     "mini-css-extract-plugin": "^1.0.0",
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
@@ -48,17 +45,22 @@
     "react-modal": "^3.11.2",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
-    "react-test-renderer": "^16.13.1",
     "redux": "^4.0.5",
     "sass-loader": "^10.0.2",
     "style-loader": "^1.2.1",
     "uuid": "^8.3.1",
     "validator": "^13.0.0",
-    "webpack": "^5.1.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack": "^5.1.0"
   },
   "devDependencies": {
     "@types/react-dates": "^21.8.0",
-    "webpack-cli": "^3.3.11"
+    "chalk": "^4.1.0",
+    "webpack-cli": "^3.3.11",
+    "enzyme": "3.0.0",
+    "enzyme-to-json": "^3.6.1",
+    "jest": "^26.5.3",
+    "live-server": "^1.2.1",
+    "react-test-renderer": "^16.13.1",
+    "webpack-dev-server": "^3.11.0"
   }
 }

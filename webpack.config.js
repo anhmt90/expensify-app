@@ -10,7 +10,7 @@ module.exports = (env) => {
         entry: './src/app.js',
         // entry: './src/playground/hoc.js',
         output: {
-            path: path.join(__dirname, 'public'),                   // must be absolute path
+            path: path.join(__dirname, 'public', 'dist'),           // must be absolute path
             filename: 'bundle.js'                                   // can be any name
         },
 
@@ -58,14 +58,16 @@ module.exports = (env) => {
             'inline-source-map',
         /* 
             devServer is also responsible for generating the bundle.js but not as a physical file 
-            but serving that up directly from memory to keep the devServer snappy and fast.
+            but serving that up directly from memory to keep the devServer snappy and fast (serve up virtually)
             To generate a physical bundle.js file, use script `webpack`
         */
-        devServer: {  
+        devServer: { 
+            // the dev server will look for the assets in the root of the virtual `public` folder 
             contentBase: path.join(__dirname, 'public'),
             
             //tell the dev-server to always serve up the index.html file for all unknown 404 (files that don't match the URL path) -> client-side routing
-            historyApiFallback: true 
+            historyApiFallback: true,
+            publicPath: '/dist/'
         }
     };
 };
