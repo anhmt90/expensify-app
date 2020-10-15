@@ -17,7 +17,7 @@
     "build:prod": "webpack -p --env production",
     "dev-server": "webpack-dev-server",
     "test": "jest --config=jest.config.json --watch",
-    "test-file": "yarn test -i src/tests/components/ExpenseListFilters.test.js",
+    "test-file": "yarn test -i src/tests/components/ExpensesSummary.test.js",
     "start": "node server/server.js",
     "heroku-postbuild": "yarn run build:prod"
   },
