@@ -1,5 +1,8 @@
 .idea/
+.vscode/
 *.log  
 node_modules/  
 *.bak  
 public/dist/
+.env.test
+.env.development

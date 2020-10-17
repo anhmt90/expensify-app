@@ -2,7 +2,7 @@ import selecExpensesTotal from '../../selectors/expenses-total';
 import expenses from '../fixtures/expenses';
 
 test('should return 0 if no expenses', () =>{
-    const totalExpenses = selecal([]);
+    const totalExpenses = selecExpensesTotal([]);
     expect(totalExpenses).toBe(0);
 });
 
