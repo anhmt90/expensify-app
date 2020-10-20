@@ -4,6 +4,10 @@ const MiniCssExtractPlugin  = require('mini-css-extract-plugin');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+/**
+ * load the enviroment variables stored in .env.test or .env.development into var process.env.
+ * in order to use them in webpack.DefinePlugin below
+ */
 if (process.env.NODE_ENV === 'test') {
     require('dotenv').config({ path: '.env.test' });
 } else if (process.env.NODE_ENV === 'development') {
