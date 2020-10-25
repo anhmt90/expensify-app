@@ -20,7 +20,7 @@ module.exports = (env) => {
     const MiniCssExtract = new MiniCssExtractPlugin({filename: 'styles.css'});
 
     return {
-        entry: './src/app.js',
+        entry: ['babel-polyfill', './src/app.js'],
         // entry: './src/playground/hoc.js',
         output: {
             path: path.join(__dirname, 'public', 'dist'),           // must be absolute path
@@ -46,7 +46,8 @@ module.exports = (env) => {
                     {
                         loader: 'css-loader',
                         options: {
-                            sourceMap: true
+                            sourceMap: true,
+                            url: false,
                         }
                     },
                     {

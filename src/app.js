@@ -9,6 +9,7 @@ import { startSetExpenses } from "./actions/expenses";
 import { login, logout } from "./actions/auth";
 // import getVisibleExpenses from "./selectors/expenses";
 import { firebase } from "./firebase/firebase-config";
+import LoadingPage from './components/LoadingPage';
 
 import "normalize.css/normalize.css"; // reset all browsers to the same base configuration
 import "./styles/styles.scss";
@@ -71,4 +72,4 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById("app"));
+ReactDOM.render(<LoadingPage />, document.getElementById("app"));

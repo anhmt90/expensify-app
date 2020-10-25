@@ -2,7 +2,7 @@ import React from 'react';
 /**
  * BrowserRouter is used once to create a router, Route is then used for each URL
  */
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import AddExpensePage from '../components/AddExpensePage';
 import EditExpensePage from '../components/EditExpensePage';
